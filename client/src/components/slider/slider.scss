@@ -1,0 +1,105 @@
+@import '../../responsive.scss'; // 반응형 디자인을 위한 스타일 시트를 가져옴
+
+.slider {
+  width: 100%; // 슬라이더의 너비를 100%로 설정
+  height: 350px; // 슬라이더의 높이를 350px로 설정
+  display: flex; // 슬라이더를 플렉스 박스로 설정
+  gap: 20px; // 내부 요소 간의 간격을 20px로 설정
+
+  @include sm {
+    height: 280px; // 작은 화면에서는 높이를 280px로 설정
+  }
+
+  .fullSlider {
+    position: absolute; // 절대 위치 설정
+    width: 100vw; // 너비를 100vw로 설정
+    height: 100vh; // 높이를 100vh로 설정
+    top: 0; // 상단 위치 설정
+    left: 0; // 좌측 위치 설정
+    background-color: black; // 배경색을 검정색으로 설정
+    display: flex; // 플렉스 박스로 설정
+    justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+    align-items: center; // 요소들을 수직 중앙 정렬
+    z-index: 9999; // z-index 설정
+
+    .arrow {
+      flex: 1; // 플렉스 비율 설정
+      display: flex; // 플렉스 박스로 설정
+      align-items: center; // 요소들을 수직 중앙 정렬
+      justify-content: center; // 요소들을 수평 중앙 정렬
+
+      img {
+        width: 50px; // 이미지의 너비를 50px로 설정
+
+        @include md {
+          width: 30px; // 중간 화면에서는 너비를 30px로 설정
+        }
+
+        @include sm {
+          width: 20px; // 작은 화면에서는 너비를 20px로 설정
+        }
+
+        &.right {
+          transform: rotate(180deg); // 오른쪽 화살표를 180도 회전
+        }
+      }
+    }
+
+    .imgContainer {
+      flex: 10; // 플렉스 비율 설정
+
+      img {
+        width: 100%; // 이미지의 너비를 100%로 설정
+        height: 100%; // 이미지의 높이를 100%로 설정
+        object-fit: cover; // 이미지가 컨테이너를 채우도록 설정
+      }
+    }
+
+    .close {
+      position: absolute; // 절대 위치 설정
+      top: 0; // 상단 위치 설정
+      right: 0; // 우측 위치 설정
+      color: white; // 글꼴 색상을 흰색으로 설정
+      font-size: 36px; // 글꼴 크기를 36px로 설정
+      font-weight: bold; // 글꼴 두께를 굵게 설정
+      padding: 50px; // 패딩을 50px로 설정
+      cursor: pointer; // 커서를 포인터로 설정
+    }
+  }
+
+  img {
+    width: 100%; // 이미지의 너비를 100%로 설정
+    height: 100%; // 이미지의 높이를 100%로 설정
+    object-fit: cover; // 이미지가 컨테이너를 채우도록 설정
+    border-radius: 10px; // 모서리를 10px로 둥글게 설정
+    cursor: pointer; // 커서를 포인터로 설정
+  }
+
+  .bigImage {
+    flex: 3; // 플렉스 비율 설정
+
+    @include sm {
+      flex: 2; // 작은 화면에서는 플렉스 비율을 2로 설정
+    }
+  }
+
+  .smallImages {
+    flex: 1; // 플렉스 비율 설정
+    display: flex; // 플렉스 박스로 설정
+    flex-direction: column; // 플렉스 방향을 세로로 설정
+    justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+    gap: 20px; // 내부 요소 간의 간격을 20px로 설정
+
+    @include sm {
+      flex: 1; // 작은 화면에서는 플렉스 비율을 1로 설정
+    }
+
+    img {
+      height: 100px; // 이미지의 높이를 100px로 설정
+
+      @include sm {
+        height: 80px; // 작은 화면에서는 높이를 80px로 설정
+      }
+    }
+  }
+}

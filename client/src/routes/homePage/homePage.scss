@@ -1,0 +1,93 @@
+/*
+* @include  scss에서 믹스인 포함 시키는 지시어
+* lg : 큰화면
+* sm : 작은화면
+* md : 중간화면
+* padding-right : 오른쪽 내부 여백
+* display: flex : flex container로 설정
+* flex-direction: column : flex container 안에서 자식 요소들이 배치되는 방향
+* justify-content : lex container의 주 축(main axis)을 기준으로 자식 요소들을 어떻게 정렬
+* gap: flexbox에서 자식 요소들 간의 간격
+* padding : 요소의 콘텐츠와 경계(border) 사이의 여백, 상하좌우 여백
+* align-items : Flexbox에서 교차 축(cross axis)
+*/
+
+@import "../../responsive.scss";
+
+.homePage {
+    display: flex;
+    height: 100%;
+
+    .textContainer {
+        flex: 3;
+   
+    .wrapper{
+        padding-right: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+        height: 100%;
+
+        @include md {
+            padding: 0;
+        }
+
+        @include sm{
+            justify-content: flex-start;
+        }
+        
+        .title{
+            font-size: 64px;
+
+            @include lg {
+                font-size: 48px;
+            }
+        }
+
+        .boxes{
+            display: flex;
+            justify-content: space-between;
+
+            @include sm {
+                display: none;
+            }
+
+            h1{
+                font-size: 36px;
+
+                @include lg {
+                    font-size: 32px;
+                }
+            }
+
+            h2 {
+                font-style: 20px;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+    .imgContainer {
+        flex: 2;
+        background-color: #fcf5f3;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        @include md {
+            display: none;
+        }
+
+        img {
+            width: 115%;
+            position: absolute;
+            right: 0;
+
+            @include lg {
+                width: 105%;
+            }
+        }
+    }
+}

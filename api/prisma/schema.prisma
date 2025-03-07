@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js" // Prisma 클라이언트 생성기
+}
+
+datasource db {
+  provider = "mongodb" // MongoDB 데이터베이스 사용
+  url      = env("DATABASE_URL") // 환경 변수에서 데이터베이스 URL 가져옴
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId // 사용자 ID
+  email     String   @unique // 이메일 (고유)
+  username  String   @unique // 사용자 이름 (고유)
+  password  String // 비밀번호
+  avatar    String? // 아바타 (선택적)
+  createdAt DateTime @default(now()) // 생성 시간 (기본값: 현재 시간)
+  posts      Post[] // 사용자가 작성한 게시물
+  savedPosts SavedPost[] // 사용자가 저장한 게시물
+  chats      Chat[]      @relation(fields: [chatIDs], references: [id]) // 사용자가 참여한 채팅
+  chatIDs    String[]    @db.ObjectId // 채팅 ID 배열
+}
+
+model Post {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId // 게시물 ID
+  title           String // 제목
+  price           Int // 가격
+  images          String[] // 이미지 배열
+  address         String // 주소
+  city            String // 도시
+  bedroom         Int // 침실 수
+  bathroom        Int // 욕실 수
+  latitude        String // 위도
+  longitude       String // 경도
+  type            Type // 유형 (구매/임대)
+  property        Property // 속성 (아파트/집/콘도/토지)
+  createdAt       DateTime @default(now()) // 생성 시간 (기본값: 현재 시간)
+  user            User        @relation(fields: [userId], references: [id]) // 게시물 작성자
+  userId          String      @db.ObjectId // 작성자 ID
+  postDetail      PostDetail? // 게시물 상세 정보 (선택적)
+  savedPosts      SavedPost[] // 게시물을 저장한 사용자
+}
+
+enum Type {
+  buy // 구매
+  rent // 임대
+}
+
+enum Property {
+  apartment // 아파트
+  house // 집
+  condo // 콘도
+  land // 토지
+}
+
+model PostDetail {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId // 게시물 상세 정보 ID
+  desc       String // 설명
+  utilities  String? // 유틸리티 (선택적)
+  pet        String? // 애완동물 (선택적)
+  income     String? // 소득 (선택적)
+  size       Int? // 크기 (선택적)
+  school     Int? // 학교 (선택적)
+  bus        Int? // 버스 (선택적)
+  restaurant Int? // 레스토랑 (선택적)
+  post       Post @relation(fields: [postId], references:[id]) // 관련 게시물
+  postId     String @db.ObjectId @unique // 게시물 ID
+}
+
+model SavedPost {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId // 저장된 게시물 ID
+  user      User     @relation(fields: [userId], references: [id]) // 사용자
+  post      Post     @relation(fields: [postId], references: [id]) // 게시물
+  userId    String   @unique @db.ObjectId // 사용자 ID
+  postId    String   @unique @db.ObjectId // 게시물 ID
+  createdAt DateTime @default(now()) // 생성 시간 (기본값: 현재 시간)
+
+  @@unique([userId, postId]) // 사용자 ID와 게시물 ID의 고유 조합
+}
+
+model Chat {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId // 채팅 ID
+  users     User[]    @relation(fields: [userIDs], references: [id]) // 채팅에 참여한 사용자
+  userIDs   String[]  @db.ObjectId // 사용자 ID 배열
+  createdAt DateTime  @default(now()) // 생성 시간 (기본값: 현재 시간)
+  seenBy    String[]  @db.ObjectId // 읽은 사용자 ID 배열
+  messages  Message[] // 채팅 메시지
+  lastMessage String? // 마지막 메시지 (선택적)
+}
+
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId // 메시지 ID
+  text      String // 메시지 텍스트
+  userId    String // 사용자 ID
+  chat      Chat     @relation(fields: [chatId], references: [id]) // 관련 채팅
+  chatId    String   @db.ObjectId // 채팅 ID
+  createdAt DateTime @default(now()) // 생성 시간 (기본값: 현재 시간)
+}

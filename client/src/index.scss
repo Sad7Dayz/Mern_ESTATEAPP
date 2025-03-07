@@ -1,0 +1,15 @@
+* {
+    padding: 0; // 모든 요소의 기본 패딩을 0으로 설정
+    margin: 0; // 모든 요소의 기본 마진을 0으로 설정
+    box-sizing: border-box; // 모든 요소의 box-sizing을 border-box로 설정
+}
+
+a {
+    text-decoration: none; // 모든 앵커 태그의 기본 텍스트 장식을 제거
+    color: inherit; // 모든 앵커 태그의 기본 색상을 상속받도록 설정
+}
+
+body {
+    font-family: "Lato", sans-serif; // 본문 텍스트의 기본 글꼴을 "Lato"로 설정, 대체 글꼴로 sans-serif 사용
+    overflow: hidden; // 본문에서 스크롤을 숨김
+}

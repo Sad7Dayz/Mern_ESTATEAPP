@@ -1,0 +1,156 @@
+/*
+* 메인페이지 및 메뉴 슬라이더 디자인
+*/
+@import "../../responsive.scss"; // 반응형 디자인을 위한 스타일 시트를 가져옴
+
+nav {
+    height: 100px; // 네비게이션 바의 높이 설정
+    display: flex; // 네비게이션 바를 플렉스 박스로 설정
+    justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+    align-items: center; // 요소들을 수직 중앙 정렬
+
+    a {
+        transition: all 0.4s ease; // 모든 속성에 대한 전환 효과 설정
+
+        @include sm {
+            display: none; // 작은 화면에서는 링크를 숨김
+        }
+
+        &:hover {
+            scale: 1.05; // 링크에 마우스를 올리면 크기 약간 확대
+        }
+    }
+
+    .left {
+        flex: 3; // 왼쪽 영역의 플렉스 비율 설정
+        display: flex; // 왼쪽 영역을 플렉스 박스로 설정
+        align-items: center; // 요소들을 수직 중앙 정렬
+        gap: 50px; // 내부 요소 간의 간격 설정
+
+        .logo {
+            font-weight: bold; // 로고의 글꼴 두께 설정
+            font-size: 20px; // 로고의 글꼴 크기 설정
+            display: flex; // 로고를 플렉스 박스로 설정
+            align-items: center; // 요소들을 수직 중앙 정렬
+            gap: 10px; // 내부 요소 간의 간격 설정
+        }
+
+        img {
+            width: 28px; // 이미지의 너비 설정
+        }
+
+        span {
+            @include md {
+                display: none; // 중간 화면에서는 텍스트를 숨김
+            }
+
+            @include sm {
+                display: initial; // 작은 화면에서는 텍스트를 표시
+            }
+        }
+    }
+
+    .right {
+        flex: 2; // 오른쪽 영역의 플렉스 비율 설정
+        display: flex; // 오른쪽 영역을 플렉스 박스로 설정
+        align-items: center; // 요소들을 수직 중앙 정렬
+        justify-content: flex-end; // 요소들을 오른쪽 정렬
+        background-color: #fcf5f3; // 배경색 설정
+        height: 100%; // 높이 설정
+
+        @include md {
+            background-color: transparent; // 중간 화면에서는 배경색을 투명으로 설정
+        }
+
+        a {
+            padding: 12px 24px; // 링크의 패딩 설정
+            margin: 20px; // 링크의 마진 설정
+        }
+
+        .user {
+            display: flex; // 사용자 정보를 플렉스 박스로 설정
+            align-items: center; // 요소들을 수직 중앙 정렬
+            font-weight: bold; // 글꼴 두께 설정
+
+            img {
+                width: 40px; // 이미지의 너비 설정
+                height: 40px; // 이미지의 높이 설정
+                border-radius: 50%; // 이미지의 모서리를 둥글게 설정
+                object-fit: cover; // 이미지가 컨테이너를 채우도록 설정
+                margin-right: 20px; // 오른쪽 마진 설정
+            }
+
+            span {
+                @include sm {
+                    display: none; // 작은 화면에서는 텍스트를 숨김
+                }
+            }
+
+            .profile {
+                padding: 12px 24px; // 패딩 설정
+                background-color: #fece51; // 배경색 설정
+                cursor: pointer; // 커서 설정
+                border: none; // 테두리 제거
+                position: relative; // 상대 위치 설정
+
+                .notification {
+                    position: absolute; // 절대 위치 설정
+                    top: -8px; // 위쪽 위치 설정
+                    right: -8px; // 오른쪽 위치 설정
+                    background-color: red; // 배경색 설정
+                    color: white; // 글꼴 색상 설정
+                    border-radius: 50%; // 모서리를 둥글게 설정
+                    width: 26px; // 너비 설정
+                    height: 26px; // 높이 설정
+                    display: flex; // 플렉스 박스로 설정
+                    align-items: center; // 요소들을 수직 중앙 정렬
+                    justify-content: center; // 요소들을 수평 중앙 정렬
+                }
+            }
+        }
+
+        .register {
+            background-color: #fece51; // 배경색 설정
+        }
+
+        .menuIcon {
+            display: none; // 기본적으로 숨김
+            z-index: 999; // z-index 설정
+
+            img {
+                width: 36px; // 이미지의 너비 설정
+                height: 36px; // 이미지의 높이 설정
+                cursor: pointer; // 커서 설정
+            }
+
+            @include sm {
+                display: inline; // 작은 화면에서는 표시
+            }
+        }
+
+        .menu {
+            position: absolute; // 절대 위치 설정
+            top: 0; // 위쪽 위치 설정
+            right: -50%; // 오른쪽 위치 설정
+            background-color: black; // 배경색 설정
+            color: white; // 글꼴 색상 설정
+            height: 100vh; // 높이 설정
+            width: 50%; // 너비 설정
+            transition: all 1s ease; // 전환 효과 설정
+            display: flex; // 플렉스 박스로 설정
+            flex-direction: column; // 플렉스 방향을 세로로 설정
+            align-items: center; // 요소들을 수직 중앙 정렬
+            justify-content: center; // 요소들을 수평 중앙 정렬
+
+            &.active {
+                right: 0; // 활성화되면 오른쪽 위치 설정
+            }
+
+            @include sm {
+                a {
+                    display: initial; // 작은 화면에서는 링크를 표시
+                }
+            }
+        }
+    }
+}

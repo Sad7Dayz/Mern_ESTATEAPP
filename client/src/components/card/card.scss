@@ -1,0 +1,103 @@
+@import '../../responsive.scss'; // 반응형 디자인을 위한 스타일 시트를 가져옴
+
+.card {
+    display: flex; // 카드 컨테이너를 플렉스 박스로 설정
+    gap: 20px; // 카드 내부 요소 간의 간격 설정
+
+    .imageContainer {
+        flex: 2; // 이미지 컨테이너의 플렉스 비율 설정
+        height: 200px; // 이미지 컨테이너의 높이 설정
+
+        @include sm {
+            display: none; // 작은 화면에서는 이미지 컨테이너를 숨김
+        }
+        
+        img {
+            width: 100%; // 이미지의 너비를 컨테이너에 맞춤
+            height: 100%; // 이미지의 높이를 컨테이너에 맞춤
+            object-fit: cover; // 이미지가 컨테이너를 채우도록 설정
+            border-radius: 10px; // 이미지의 모서리를 둥글게 설정
+        }
+    }
+
+    .textContainer {
+        flex: 3; // 텍스트 컨테이너의 플렉스 비율 설정
+        display: flex; // 텍스트 컨테이너를 플렉스 박스로 설정
+        flex-direction: column; // 플렉스 방향을 세로로 설정
+        justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+        gap: 10px; // 텍스트 컨테이너 내부 요소 간의 간격 설정
+
+        img {
+            width: 16px; // 이미지의 너비 설정
+            height: 16px; // 이미지의 높이 설정
+        }
+
+        .title {
+            font-size: 20px; // 제목의 글꼴 크기 설정
+            font-weight: 600; // 제목의 글꼴 두께 설정
+            color: #444; // 제목의 글꼴 색상 설정
+            transition: all 0.4s ease; // 제목의 모든 속성에 대한 전환 효과 설정
+
+            &:hover {
+                color: #000; // 제목에 마우스를 올리면 글꼴 색상 변경
+                scale: 1.01; // 제목에 마우스를 올리면 크기 약간 확대
+            }
+        }
+
+        .address {
+            font-size: 14px; // 주소의 글꼴 크기 설정
+            display: flex; // 주소를 플렉스 박스로 설정
+            align-items: center; // 주소의 요소들을 수직 중앙 정렬
+            gap: 5px; // 주소의 요소 간의 간격 설정
+            color: #888; // 주소의 글꼴 색상 설정
+        }
+
+        .price {
+            font-size: 20px; // 가격의 글꼴 크기 설정
+            font-weight: 300; // 가격의 글꼴 두께 설정
+            padding: 5px; // 가격의 패딩 설정
+            border-radius: 5px; // 가격의 모서리를 둥글게 설정
+            background-color: rgba(254, 205, 81, 0.438); // 가격의 배경색 설정
+            width: max-content; // 가격의 너비를 내용에 맞춤
+        }
+
+        .bottom {
+            display: flex; // 하단 컨테이너를 플렉스 박스로 설정
+            justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+            gap: 10px; // 하단 컨테이너 내부 요소 간의 간격 설정
+        }
+
+        .features {
+            display: flex; // 특징 컨테이너를 플렉스 박스로 설정
+            gap: 20px; // 특징 컨테이너 내부 요소 간의 간격 설정
+            font-size: 14px; // 특징의 글꼴 크기 설정
+        }
+
+        .feature {
+            display: flex; // 특징을 플렉스 박스로 설정
+            align-items: center; // 특징의 요소들을 수직 중앙 정렬
+            gap: 5px; // 특징의 요소 간의 간격 설정
+            background-color: whitesmoke; // 특징의 배경색 설정
+            padding: 5px; // 특징의 패딩 설정
+            border-radius: 5px; // 특징의 모서리를 둥글게 설정
+        }
+    }
+
+    .icons {
+        display: flex; // 아이콘 컨테이너를 플렉스 박스로 설정
+        gap: 20px; // 아이콘 컨테이너 내부 요소 간의 간격 설정
+
+        .icon {
+            border: 1px solid #999; // 아이콘의 테두리 설정
+            padding: 2px 5px; // 아이콘의 패딩 설정
+            border-radius: 5px; // 아이콘의 모서리를 둥글게 설정
+            cursor: pointer; // 아이콘에 마우스를 올리면 포인터 커서로 변경
+            align-items: center; // 아이콘의 요소들을 수직 중앙 정렬
+            justify-content: center; // 아이콘의 요소들을 수평 중앙 정렬
+
+            &:hover {
+                background-color: lightgray; // 아이콘에 마우스를 올리면 배경색 변경
+            }
+        }
+    }
+}

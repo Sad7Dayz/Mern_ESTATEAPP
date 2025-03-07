@@ -1,0 +1,5 @@
+.LIST {
+    display: flex; // 리스트 컴포넌트를 플렉스 박스로 설정
+    flex-direction: column; // 플렉스 방향을 세로로 설정
+    gap: 50px; // 내부 요소 간의 간격을 50px로 설정
+}

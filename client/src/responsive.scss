@@ -1,0 +1,20 @@
+// 작은 화면을 위한 미디어 쿼리 믹스인
+@mixin sm {
+  @media (max-width: 738px) {
+    @content; // 믹스인을 사용할 때 포함된 내용을 여기에 삽입
+  }
+}
+
+// 중간 화면을 위한 미디어 쿼리 믹스인
+@mixin md {
+  @media (max-width: 1024px) {
+    @content; // 믹스인을 사용할 때 포함된 내용을 여기에 삽입
+  }
+}
+
+// 큰 화면을 위한 미디어 쿼리 믹스인
+@mixin lg {
+  @media (max-width: 1366px) {
+    @content; // 믹스인을 사용할 때 포함된 내용을 여기에 삽입
+  }
+}

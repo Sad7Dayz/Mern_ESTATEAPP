@@ -1,0 +1,119 @@
+.chat {
+    height: 100%; // 채팅 컴포넌트의 높이를 100%로 설정
+    display: flex; // 채팅 컴포넌트를 플렉스 박스로 설정
+    flex-direction: column; // 플렉스 방향을 세로로 설정
+
+    .messages {
+        flex: 1; // 메시지 목록의 플렉스 비율 설정
+        display: flex; // 메시지 목록을 플렉스 박스로 설정
+        flex-direction: column; // 플렉스 방향을 세로로 설정
+        gap: 20px; // 메시지 목록 내부 요소 간의 간격 설정
+        overflow-y: scroll; // 세로 스크롤 설정
+
+        h1 {
+            font-weight: 300; // 제목의 글꼴 두께 설정
+        }
+
+        .message {
+            background-color: white; // 메시지의 배경색 설정
+            padding: 20px; // 메시지의 패딩 설정
+            border-radius: 10px; // 메시지의 모서리를 둥글게 설정
+            display: flex; // 메시지를 플렉스 박스로 설정
+            align-items: center; // 메시지의 요소들을 수직 중앙 정렬
+            gap: 20px; // 메시지의 요소 간의 간격 설정
+            cursor: pointer; // 메시지에 마우스를 올리면 포인터 커서로 변경
+
+            img {
+                width: 40px; // 이미지의 너비 설정
+                height: 40px; // 이미지의 높이 설정
+                border-radius: 50%; // 이미지의 모서리를 둥글게 설정
+                object-fit: cover; // 이미지가 컨테이너를 채우도록 설정
+            }
+
+            span {
+                font-weight: bold; // 텍스트의 글꼴 두께 설정
+            }
+        }
+    }
+
+    .chatBox {
+        flex: 1; // 채팅 박스의 플렉스 비율 설정
+        background-color: white; // 채팅 박스의 배경색 설정
+        display: flex; // 채팅 박스를 플렉스 박스로 설정
+        flex-direction: column; // 플렉스 방향을 세로로 설정
+        justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+
+        .top {
+            background-color: #f7c14b85; // 상단 바의 배경색 설정
+            padding: 20px; // 상단 바의 패딩 설정
+            font-weight: bold; // 상단 바의 글꼴 두께 설정
+            display: flex; // 상단 바를 플렉스 박스로 설정
+            align-items: center; // 상단 바의 요소들을 수직 중앙 정렬
+            justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+
+            .user {
+                display: flex; // 사용자 정보를 플렉스 박스로 설정
+                align-items: center; // 사용자 정보의 요소들을 수직 중앙 정렬
+                gap: 20px; // 사용자 정보의 요소 간의 간격 설정
+
+                img {
+                    width: 30px; // 이미지의 너비 설정
+                    height: 30px; // 이미지의 높이 설정
+                    border-radius: 50%; // 이미지의 모서리를 둥글게 설정
+                    object-fit: cover; // 이미지가 컨테이너를 채우도록 설정
+                }
+            }
+            .close {
+                cursor: pointer; // 닫기 버튼에 마우스를 올리면 포인터 커서로 변경
+            }
+        }
+
+        .center {
+            height: 350px; // 중앙 영역의 높이 설정
+            overflow: scroll; // 스크롤 설정
+            padding: 20px; // 패딩 설정
+            display: flex; // 중앙 영역을 플렉스 박스로 설정
+            flex-direction: column; // 플렉스 방향을 세로로 설정
+            gap: 20px; // 요소 간의 간격 설정
+            
+            .chatMessage {
+                width: 50%; // 메시지의 너비 설정
+
+                &.own {
+                    align-self: flex-end; // 자신의 메시지를 오른쪽에 정렬
+                    text-align: right; // 텍스트를 오른쪽 정렬
+                }
+
+                span {
+                    font-size: 12px; // 텍스트의 글꼴 크기 설정
+                    background-color: #f7c14b85; // 배경색 설정
+                    padding: 2px; // 패딩 설정
+                    border-radius: 5px; // 모서리를 둥글게 설정
+                }
+            }
+        }
+
+        .bottom {
+            border-top: 2px solid #f7c14b85; // 상단 테두리 설정
+            height: 60px; // 높이 설정
+            display: flex; // 하단 영역을 플렉스 박스로 설정
+            align-items: center; // 요소들을 수직 중앙 정렬
+            justify-content: space-between; // 요소들을 공간 사이에 균등하게 배치
+
+            textarea {
+                flex: 3; // 텍스트 영역의 플렉스 비율 설정
+                height: 100%; // 높이 설정
+                border: none; // 테두리 제거
+                padding: 20px; // 패딩 설정
+            }
+
+            button {
+                flex: 1; // 버튼의 플렉스 비율 설정
+                background-color: #f7c14b85; // 배경색 설정
+                height: 100%; // 높이 설정
+                border: none; // 테두리 제거
+                cursor: pointer; // 버튼에 마우스를 올리면 포인터 커서로 변경
+            }
+        }
+    }
+}
